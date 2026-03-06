@@ -19,6 +19,21 @@ app.get("/", (req, res) => {
   res.send("Backend running for E-ZONE!");
 });
 
+// Subjects test route
+app.get("/timetable", (req, res) => {
+
+  const timetable = [
+    { day: "Monday", subject: "Mathematics", time: "9:00 - 10:00" },
+    { day: "Monday", subject: "Science", time: "10:00 - 11:00" },
+    { day: "Tuesday", subject: "English", time: "9:00 - 10:00" },
+    { day: "Wednesday", subject: "Computer Science", time: "11:00 - 12:00" },
+    { day: "Thursday", subject: "Social Studies", time: "12:00 - 1:00" }
+  ];
+
+  res.json(timetable);
+
+});
+
 // ✅ FIX 2: Move routes **above app.listen()**
 app.post("/add-product", async (req, res) => {
   try {

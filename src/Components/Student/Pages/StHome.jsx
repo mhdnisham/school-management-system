@@ -1,4 +1,5 @@
-import React from 'react';
+/*import React from 'react';*/
+import React, { useEffect, useState } from 'react';
 import Access from '../../Access'; 
 import { Calendar, Check, Banknote, MessagesSquare, Video, Bell, GraduationCap } from 'lucide-react'; 
 import StNav from '../MinComponens/StNav';
@@ -6,10 +7,28 @@ import StFooter from '../MinComponens/StFooter';
 import { path } from 'framer-motion/m';
 import { useNavigate } from 'react-router-dom';
 
-function StHome() {
+/*function StHome() {
     const navigation=useNavigate()
 
     const studentName = "Sarah Connor"; 
+*/
+
+function StHome() {
+
+    const navigation = useNavigate()
+
+    const [timetable, setTimetable] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/timetable")
+          .then(res => res.json())
+          .then(data => {
+            console.log("Timetable Data:", data);
+            setTimetable(data);
+          });
+    }, []);
+
+    const studentName = "Sarah Connor";
 
     const subjects = [
         { id: 1, name: "Mathematics", image: "https://img.icons8.com/color/96/math.png", path: "/stsubject" },
@@ -100,6 +119,33 @@ function StHome() {
                         />
                     </div>
                 </section>
+                <section className="mt-10">
+  <h2 className="text-3xl font-bold text-gray-800 mb-6">
+    Today's Timetable
+  </h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    {timetable.map((item, index) => (
+      <div key={index} className="bg-white p-4 rounded-lg shadow">
+
+        <h3 className="text-lg font-semibold text-indigo-600">
+          {item.subject}
+        </h3>
+
+        <p className="text-gray-600">
+          {item.day}
+        </p>
+
+        <p className="text-gray-500">
+          {item.time}
+        </p>
+
+      </div>
+    ))}
+
+  </div>
+</section>
             </main>
             <StFooter/>
         </div>
