@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { GraduationCap, Menu,Home, BookOpen, MessageSquare, User, CalendarDays } from 'lucide-react'
 // import photo from "Public/MyPhoto"
 import { motion, AnimatePresence } from "framer-motion";

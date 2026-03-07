@@ -1,6 +1,5 @@
 import { div } from 'framer-motion/m';
-import React from 'react'
-
+import React, { useState } from "react";
 function TeTestsMarks() {
   const students = [
     { roll: 1, name: "Arjun Kumar" },
