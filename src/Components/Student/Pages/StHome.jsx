@@ -119,33 +119,7 @@ function StHome() {
                         />
                     </div>
                 </section>
-                <section className="mt-10">
-  <h2 className="text-3xl font-bold text-gray-800 mb-6">
-    Today's Timetable
-  </h2>
-
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-    {timetable.map((item, index) => (
-      <div key={index} className="bg-white p-4 rounded-lg shadow">
-
-        <h3 className="text-lg font-semibold text-indigo-600">
-          {item.subject}
-        </h3>
-
-        <p className="text-gray-600">
-          {item.day}
-        </p>
-
-        <p className="text-gray-500">
-          {item.time}
-        </p>
-
-      </div>
-    ))}
-
-  </div>
-</section>
+                
             </main>
             <StFooter/>
         </div>

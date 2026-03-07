@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: react-app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: node-api
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://nishunisham78_db_user:nisham123@nishamdb.g0dqsq8.mongodb.net/nisham?retryWrites=true&w=majority&appName=nishamdb
+
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
